@@ -1,9 +1,36 @@
-html,
-body {
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --cl-primary: #41aa3f;
+  --cl-secondary: #ffbe34;
+  --cl-tertiary: #ff7d33;
+
+  --grey-dark: #ccc;
+  --grey-light: #f5f5f5;
+
+  --inner-width: 1132px;
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', Arial, Segoe UI, sans-serif;
+  color: #343232;
+  font-size: 1.6rem;
+}
+
+ul {
+  list-style: none;
 }
 
 a {
@@ -11,16 +38,29 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+button {
+  cursor: pointer;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+img {
+  display: block;
+}
+
+svg {
+  pointer-events: none;
+}
+
+svg.clickable {
+  pointer-events: all;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald', 'Montserrat', Arial, Segoe UI, sans-serif;
+  font-weight: 400;
+  color: #2e294e;
 }
