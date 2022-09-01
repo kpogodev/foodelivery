@@ -1,0 +1,40 @@
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.phone span {
+  display: none;
+}
+
+.phone a {
+  display: grid;
+  place-items: center;
+  width: clamp(3.2rem, 4.16vw, 4.8rem);
+  height: clamp(3.2rem, 4.16vw, 4.8rem);
+  border-radius: 50%;
+  background: var(--cl-primary);
+  color: #fff;
+  border: 2px solid var(--cl-primary);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.phone a svg {
+  width: 40%;
+  fill: currentColor;
+}
+
+.phone a:hover,
+.phone a:focus-visible {
+  background: #fff;
+  color: var(--cl-primary);
+}
+
+@media (min-width: 1024px) {
+  .phone span {
+    display: inline-block;
+    font-weight: 500;
+  }
+}
