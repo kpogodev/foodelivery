@@ -1,0 +1,135 @@
+.container {
+  width: calc(100% - 10rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 38rem;
+  gap: clamp(2.5rem, 2.5vw, 4rem);
+}
+
+.header {
+  font-size: clamp(3rem, 4vw, 6.4rem);
+  line-height: 1.2;
+  font-family: var(--font-secondary), sans-serif;
+  color: #343232;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #343232;
+}
+
+.nutritions {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.nutrition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+.nutrition:nth-of-type(2) {
+  padding-inline: 1.5rem;
+  border-left: 1px solid var(--grey-light);
+  border-right: 1px solid var(--grey-light);
+}
+
+.nutrition_name {
+  font-weight: 500;
+}
+
+.nutrition_value {
+  color: #2e294e;
+  font-weight: 700;
+}
+
+.cta {
+  width: 20rem;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 4rem;
+  line-height: 1;
+  border-radius: 50vw;
+  background: var(--cl-primary);
+  border: 3px solid var(--cl-primary);
+  color: #fff;
+  font-family: var(--font-secondary), sans-serif;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cta span:nth-of-type(1) {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.cta span:nth-of-type(2) {
+  font-size: 1.6rem;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: #fff;
+  color: var(--cl-primary);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-secondary), sans-serif;
+  gap: 0.5rem;
+}
+
+.counter_value {
+  font-size: clamp(2.6rem, 4.68vw, 3.6rem);
+  color: var(--cl-primary);
+  line-height: 1;
+}
+
+.counter_divider {
+  width: 6.5rem;
+  height: 0.1rem;
+  background-color: rgba(52, 50, 50, 0.5);
+}
+
+.counter_total {
+  font-size: clamp(1.8rem, 3.12vw, 2.4rem);
+  font-weight: 300;
+  color: rgba(52, 50, 50, 1);
+  line-height: 1;
+}
+
+@media (min-width: 769px) {
+  .nutritions {
+    gap: 3rem;
+  }
+
+  .nutrition:nth-of-type(2) {
+    padding-inline: 3rem;
+  }
+
+  .cta {
+    width: 25rem;
+    height: 5rem;
+  }
+
+  .cta span:nth-of-type(1) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  .cta span:nth-of-type(2) {
+    font-size: 1.8rem;
+  }
+}
