@@ -11,7 +11,7 @@ function Hero() {
       <div className={styles.inner}>
         <SpecialDeal />
         <div className={styles.image}>
-          <Image src={DealImg} width={600} height={600} objectFit='contain' alt='' />
+          <Image src={DealImg} width={600} height={600} objectFit='contain' alt=''/>
         </div>
       </div>
       <div className={styles.pad}><Watermark className={styles.pad_watermark} /></div>

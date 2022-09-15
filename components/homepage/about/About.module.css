@@ -68,6 +68,7 @@
 
 @media (min-width: 769px) {
   .image {
+    margin-top: auto;
     display: flex;
   }
 
