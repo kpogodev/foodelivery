@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.inner {
+  min-width: 11rem;
+  min-height: 11rem;
+  width: 11rem;
+  height: 11rem;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--grey-dark);
+  background: transparent;
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  font-size: 2rem;
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+.indicator {
+  width: 70%;
+  height: clamp(3rem, 3.75vw, 4.5rem);
+}
+
+.indicator svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--grey-light);
+}
+
+.inner svg {
+  width: 50%;
+  height: 50%;
+  fill: currentColor;
+}
+
+.selected {
+  color: var(--cl-primary);
+}

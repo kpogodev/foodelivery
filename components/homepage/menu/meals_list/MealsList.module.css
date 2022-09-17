@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  padding-block: clamp(4rem, 8.33vw, 10rem);
+  z-index: 1;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: calc(clamp(1.5rem, 3.9vw, 3rem) * -1);
+  width: calc(100% + clamp(1.5rem, 3.9vw, 3rem) * 2);
+  height: 100%;
+  background: var(--grey-light);
+  z-index: -1;
+}
+
+.inner {
+  max-width: 64rem;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+}
+
+@media (min-width: 1201px) {
+  .inner {
+    max-width: var(--inner-width);
+    padding-inline: 4rem;
+  }
+
+  .container::before {
+    top: 0;
+    right: calc(clamp(1.5rem, 3.9vw, 3rem) * -1);
+    width: calc(100% + clamp(1.5rem, 3.9vw, 3rem));
+    max-width: 162.5rem;
+    border-radius: 5rem 0 0 5rem;
+  }
+}

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Header from 'components/header/Header'
 import About from 'components/homepage/about/About'
 import Hero from 'components/homepage/hero/Hero'
-import Menu from 'components/menu/Menu'
+import Menu from 'components/homepage/menu/Menu'
 
 
 const Home: NextPage = () => {

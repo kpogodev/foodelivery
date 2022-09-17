@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+.item:nth-of-type(2) {
+  padding-inline: 1.5rem;
+  border-left: 1px solid var(--grey-light);
+  border-right: 1px solid var(--grey-light);
+}
+
+.name {
+  font-weight: 500;
+}
+
+.value {
+  color: #2e294e;
+  font-weight: 700;
+}

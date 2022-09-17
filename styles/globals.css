@@ -67,3 +67,18 @@ h6 {
   font-weight: 400;
   color: #2e294e;
 }
+
+/* Custom Swiper Styles */
+.slide-with-visibility.swiper-slide-visible {
+  transition: opacity 0.3s ease;
+}
+
+.slide-with-visibility:not(.swiper-slide-visible) {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slide-with-visibility.swiper-slide-next,
+.slide-with-visibility.swiper-slide-prev {
+  opacity: 0.5;
+}

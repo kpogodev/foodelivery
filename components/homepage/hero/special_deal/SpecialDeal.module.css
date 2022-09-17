@@ -22,37 +22,6 @@
   color: #343232;
 }
 
-.nutritions {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.nutrition {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 1.4rem;
-}
-
-.nutrition:nth-of-type(2) {
-  padding-inline: 1.5rem;
-  border-left: 1px solid var(--grey-light);
-  border-right: 1px solid var(--grey-light);
-}
-
-.nutrition_name {
-  font-weight: 500;
-}
-
-.nutrition_value {
-  color: #2e294e;
-  font-weight: 700;
-}
-
 .cta {
   width: 20rem;
   height: 4rem;
@@ -111,14 +80,6 @@
 }
 
 @media (min-width: 769px) {
-  .nutritions {
-    gap: 3rem;
-  }
-
-  .nutrition:nth-of-type(2) {
-    padding-inline: 3rem;
-  }
-
   .cta {
     width: 25rem;
     height: 5rem;
