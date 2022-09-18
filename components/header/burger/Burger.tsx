@@ -1,4 +1,3 @@
-import React from 'react'
 import BurgerIcon from 'assets/burger.svg'
 import styles from './Burger.module.css'
 

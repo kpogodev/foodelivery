@@ -1,4 +1,3 @@
-import React from 'react'
 import Navigation from './navigation/Navigation'
 import styles from './Header.module.css'
 import Logo from './logo/Logo'

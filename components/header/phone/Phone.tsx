@@ -1,13 +1,14 @@
-import React from 'react'
 import styles from './Phone.module.css'
 import PhoneIcon from 'assets/phone.svg'
 
-function Phone({phoneNumber}: {phoneNumber: string}) {
+function Phone({ phoneNumber }: { phoneNumber: string | number }) {
   return (
-        <div className={styles.phone}>
-          <span>{phoneNumber}</span>
-          <a href={`tel:${phoneNumber.trim().replaceAll(' ', '')}`}><PhoneIcon/></a>
-        </div>
+    <div className={styles.phone}>
+      <span>{phoneNumber}</span>
+      <a href={`tel:${typeof phoneNumber === 'string' ? phoneNumber.trim().replaceAll(' ', '') : phoneNumber}`}>
+        <PhoneIcon />
+      </a>
+    </div>
   )
 }
 

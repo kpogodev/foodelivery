@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import styles from './Hero.module.css'
 import Watermark from 'assets/watermark-special.svg'

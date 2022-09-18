@@ -1,4 +1,3 @@
-import React from 'react'
 import Category from './category/Category'
 import Filter from './filter/Filter'
 import MealsList from './meals_list/MealsList'

@@ -4,6 +4,7 @@ import Header from 'components/header/Header'
 import About from 'components/homepage/about/About'
 import Hero from 'components/homepage/hero/Hero'
 import Menu from 'components/homepage/menu/Menu'
+import Media from 'components/homepage/media/Media'
 
 
 const Home: NextPage = () => {
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
       <Hero />
       <About />
       <Menu />
+      <Media />
     </div>
   )
 }

@@ -5,7 +5,7 @@ const useMediaQuery = (queryString: string) => {
 
   useEffect(() => {
     const screen = window.matchMedia(queryString)
-    const checkScreenSize = () => setMatches(screen.matches)
+    const checkScreenSize = (() => setMatches(screen.matches))
     checkScreenSize()
 
     screen.addEventListener('change', checkScreenSize)

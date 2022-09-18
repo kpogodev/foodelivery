@@ -20,7 +20,7 @@ export const meals = [
     name: 'Breakfast 2',
     description: 'Description 2',
     price: 10,
-    image: '/salmon.png',
+    image: '/egss.png',
     nutritions: {
       calories: 250,
       fats: 15,
@@ -36,7 +36,7 @@ export const meals = [
     name: 'Breakfast 3',
     description: 'Description 3',
     price: 10,
-    image: '/salmon.png',
+    image: '/oysters.png',
     nutritions: {
       calories: 230,
       fats: 8.4,
@@ -52,7 +52,7 @@ export const meals = [
     name: 'Breakfast 4',
     description: 'Description 4',
     price: 10,
-    image: '/salmon.png',
+    image: '/steak.png',
     nutritions: {
       calories: 190,
       fats: 8,
