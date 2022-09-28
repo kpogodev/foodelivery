@@ -1,8 +1,9 @@
 import { useContext } from 'react'
-import { MenuContext } from 'src/components/homepage/menu/MenuContext'
+import { MenuContext } from 'components/homepage/menu/MenuContext'
 import { meals } from '../data'
 import styles from './MealsList.module.css'
-import MealCard from './meal_card/MealCard'
+import MealCard from '../meal_card/MealCard'
+
 import { v4 as uuid } from 'uuid'
 
 function MealsList() {
