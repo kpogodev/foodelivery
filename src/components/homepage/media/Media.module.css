@@ -21,7 +21,7 @@
 }
 
 .header {
-  font-size: clamp(3rem, 4vw, 4.8rem);
+  font-size: clamp(2.8rem, 4vw, 4rem);
   line-height: 1.2;
   max-width: 25ch;
   text-align: center;

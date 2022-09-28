@@ -74,9 +74,15 @@ function Media() {
                     preload='true'
                     poster='/placeholder.png'
                   />
-                  <button className={styles.close_button} onClick={toggleVideoBox}>
+                  <motion.button
+                    className={styles.close_button}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1, transition: { duration: 0.5 } }}
+                    exit={{ scale: 0 }}
+                    onClick={toggleVideoBox}
+                  >
                     <CrossIcon />
-                  </button>
+                  </motion.button>
                 </motion.div>
               </motion.div>
             )}

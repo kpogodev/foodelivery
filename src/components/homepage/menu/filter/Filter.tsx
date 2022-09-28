@@ -1,6 +1,6 @@
-import CustomSelect from 'components/reusable/custom_select/CustomSelect'
+import CustomSelect from 'src/components/reusable/custom_select/CustomSelect'
 import { useContext } from 'react'
-import { MenuContext } from 'components/homepage/menu/MenuContext'
+import { MenuContext } from 'src/components/homepage/menu/MenuContext'
 import styles from './Filter.module.css'
 
 const genderOptions = ['All', 'Male', 'Female']

@@ -1,6 +1,6 @@
 import styles from './MealCard.module.css'
 import Image from 'next/image'
-import NutritionTabel from 'components/reusable/nutrition_tabel/NutritionTabel'
+import NutritionTabel from 'src/components/reusable/nutrition_tabel/NutritionTabel'
 import { Meal } from 'types'
 
 function MealCard({ meal }: { meal: Meal }) {

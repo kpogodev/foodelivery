@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SpecialDeal.module.css'
 import Link from 'next/link'
-import NutritionTabel from 'components/reusable/nutrition_tabel/NutritionTabel'
+import NutritionTabel from 'src/components/reusable/nutrition_tabel/NutritionTabel'
 
 function SpecialDeal() {
   return (
