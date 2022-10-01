@@ -16,19 +16,82 @@
 
 .inner {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem, 5.2vw, 4rem);
+  justify-content: space-between;
   padding-block: clamp(4rem, 8.33vw, 10rem);
   margin-inline: auto;
   z-index: 1;
 }
 
+.watermark {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.connector_left {
+  display: none;
+  position: absolute;
+  height: 24.9rem;
+  top: 22%;
+  z-index: -1;
+}
+
+.connector_right {
+  display: none;
+  position: absolute;
+  width: 11.4rem;
+  height: 19.4rem;
+  top: 22%;
+  z-index: -1;
+}
+
 @media (min-width: 1201px) {
+  .connector_left,
+  .connector_right {
+    display: block;
+  }
+
+  .connector_left {
+    width: 22rem;
+    left: 18%;
+  }
+
+  .connector_right {
+    right: 28%;
+  }
+
   .inner {
-    max-width: var(--inner-width);
+    max-width: calc(var(--inner-width) + 10rem);
+    padding-inline: 5rem;
+    flex-direction: row;
+    gap: 10rem;
   }
 
   .container::before {
     width: calc(100% - clamp(1.5rem, 3.9vw, 3rem));
     max-width: 162.5rem;
     border-radius: 5rem 0 0 5rem;
+  }
+
+  .watermark {
+    width: calc(100% - 10rem);
+  }
+}
+
+@media (min-width: 1301px) {
+  .connector_left {
+    width: 24.2rem;
+    left: 17%;
+  }
+
+  .connector_right {
+    right: 30%;
   }
 }
