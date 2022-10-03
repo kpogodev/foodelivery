@@ -89,3 +89,13 @@
     gap: 10rem;
   }
 }
+
+@media (min-width: 1921px) {
+  .pad {
+    max-width: 38vw;
+  }
+
+  .pad_watermark {
+    max-width: 20rem;
+  }
+}

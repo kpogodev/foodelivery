@@ -95,3 +95,9 @@
     right: 30%;
   }
 }
+
+@media (min-width: 1921px) {
+  .container::before {
+    max-width: 85vw;
+  }
+}
