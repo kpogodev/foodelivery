@@ -17,3 +17,21 @@ export interface Nutritions {
     fats: number | string;
     proteins: number | string;
 }
+
+export interface Post {
+    id: number | string;
+    title: string;
+    body: string;
+    author: string;
+    date: string;
+    comments: Comment[];
+    images: string[];
+    tags: string[];
+}
+
+export interface Comment {
+    id: number | string;
+    author: string;
+    body: string;
+    date: string;
+}

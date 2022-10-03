@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: clamp(4rem, 5.6vw, 9rem) clamp(1.5rem, 3vw, 3rem);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: var(--inner-width);
+  gap: clamp(2.5rem, 3.33vw, 4rem);
+}
+
+.header {
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 769px) {
+  .inner {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1201px) {
+  .inner {
+    align-items: flex-start;
+  }
+}
