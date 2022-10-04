@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  place-items: center;
+  padding-bottom: clamp(3rem, 6.25vw, 12rem);
+  padding-inline: clamp(1.5rem, 3.9vw, 3rem);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: var(--inner-width);
+}
+
