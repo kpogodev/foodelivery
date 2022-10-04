@@ -6,6 +6,7 @@ import Menu from 'components/homepage/menu/Menu'
 import Media from 'components/homepage/media/Media'
 import HowItWorks from 'components/homepage/how_it_works/HowItWorks'
 import LatestPosts from 'components/homepage/latest_posts/LatestPosts'
+import GetInTouch from 'components/homepage/get_in_touch/GetInTouch'
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       <Media />
       <HowItWorks />
       <LatestPosts />
+      <GetInTouch />
     </>
   )
 }
