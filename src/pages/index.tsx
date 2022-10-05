@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { motion } from 'framer-motion'
 import Meta from 'components/reusable/meta/Meta'
 import About from 'components/homepage/about/About'
 import Hero from 'components/homepage/hero/Hero'
@@ -10,7 +11,13 @@ import GetInTouch from 'components/homepage/get_in_touch/GetInTouch'
 
 const Home: NextPage = () => {
   return (
-    <>
+    <motion.div
+      key='home-page'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       <Meta />
       <Hero />
       <About />
@@ -19,7 +26,7 @@ const Home: NextPage = () => {
       <HowItWorks />
       <LatestPosts />
       <GetInTouch />
-    </>
+    </motion.div>
   )
 }
 

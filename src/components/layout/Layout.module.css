@@ -1,0 +1,6 @@
+.container {
+  position: relative;
+  transform-origin: left top;
+  background-color: #fff;
+  z-index: 1;
+}

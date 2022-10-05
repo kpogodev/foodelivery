@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import CrossIcon from 'assets/cross.svg'
 import styles from './Media.module.css'
 
@@ -18,7 +18,7 @@ function Media() {
   //Auto Play
   useEffect(() => {
     if (showVideoBox) {
-      videoRef.current?.play()
+      setTimeout(() => videoRef.current?.play(), 500)
     } else {
       videoRef.current?.pause()
     }
@@ -51,43 +51,42 @@ function Media() {
             play video
           </button>
         </div>
-        <AnimateSharedLayout>
-          <motion.div className={styles.video} layoutId='video'>
-            <motion.video src='/placeholder.mp4' controls={showControls} playsInline poster='/placeholder.png' />
-          </motion.div>
 
-          <AnimatePresence>
-            {showVideoBox && (
-              <motion.div
-                className={styles.video_background}
-                initial={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
-                animate={{ backgroundColor: 'rgba(255, 125, 51, 0.8)' }}
-                exit={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
-                onClick={toggleVideoBox}
-              >
-                <motion.div layoutId='video' className={styles.video_box}>
-                  <motion.video
-                    ref={videoRef}
-                    src='/placeholder.mp4'
-                    controls={showControls}
-                    playsInline
-                    preload='true'
-                    poster='/placeholder.png'
-                  />
-                  <motion.button
-                    className={styles.close_button}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1, transition: { duration: 0.5 } }}
-                    exit={{ scale: 0 }}
-                    onClick={toggleVideoBox}
-                  >
-                    <CrossIcon />
-                  </motion.button>
-                </motion.div>
+        <motion.div className={styles.video} layoutId='video'>
+          <motion.video src='/placeholder.mp4' controls={showControls} playsInline poster='/placeholder.png' />
+        </motion.div>
+
+        <AnimatePresence>
+          {showVideoBox && (
+            <motion.div
+              className={styles.video_background}
+              initial={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
+              animate={{ backgroundColor: 'rgba(255, 125, 51, 0.8)' }}
+              exit={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
+              onClick={toggleVideoBox}
+            >
+              <motion.div layoutId='video' className={styles.video_box}>
+                <motion.video
+                  ref={videoRef}
+                  src='/placeholder.mp4'
+                  controls={showControls}
+                  playsInline
+                  preload='true'
+                  poster='/placeholder.png'
+                />
+                <motion.button
+                  className={styles.close_button}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1, transition: { duration: 0.5 } }}
+                  exit={{ scale: 0 }}
+                  onClick={toggleVideoBox}
+                >
+                  <CrossIcon />
+                </motion.button>
               </motion.div>
-            )}
-          </AnimatePresence>
-        </AnimateSharedLayout>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

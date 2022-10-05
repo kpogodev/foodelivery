@@ -43,6 +43,12 @@ function useMenuStateManager(initialState: InitialFilters) {
   }
 }
 
-export default function MenuContextProvider({ initialFilters, children }: { initialFilters: InitialFilters; children: React.ReactNode[] }) {
+export default function MenuContextProvider({
+  initialFilters,
+  children,
+}: {
+  initialFilters: InitialFilters
+  children: React.ReactNode[]
+}) {
   return <MenuContext.Provider value={useMenuStateManager(initialFilters)}>{children}</MenuContext.Provider>
 }

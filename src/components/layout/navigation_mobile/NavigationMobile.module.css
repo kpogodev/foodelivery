@@ -1,0 +1,94 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 75%;
+  height: 100%;
+  max-width: 40rem;
+  padding: clamp(2.5rem, 5.2vw, 4rem) clamp(1.5rem, 3.9vw, 3rem);
+  background-color: var(--cl-secondary);
+  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.12);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid #343232;
+}
+
+.button {
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  border: 2px solid transparent;
+  background: #fff;
+  color: var(--cl-tertiary);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.12);
+  transition: color 0.2s ease, background 0.2s ease, border 0.2s ease;
+}
+
+.button svg {
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  fill: currentColor;
+  pointer-events: none;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--cl-tertiary);
+  border-color: var(--cl-tertiary);
+  color: #fff;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item {
+  width: 100%;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: clamp(1.8rem, 2.6vw, 2rem);
+  font-weight: 600;
+  border-radius: 50vw;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  background-color: var(--cl-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: #fff;
+}
+
+@media (min-width: 769px) {
+  .container {
+    display: none;
+  }
+}
