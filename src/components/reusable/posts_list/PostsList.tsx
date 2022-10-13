@@ -8,15 +8,30 @@ import ClockIcon from 'assets/clock.svg'
 import UserIcon from 'assets/user.svg'
 import CommentIcon from 'assets/comment.svg'
 import ChevronsIcon from 'assets/double-chevron.svg'
+import { motion } from 'framer-motion'
+
+const elementEntranceVariants = {
+  offscreen: {
+    opacity: 0,
+    x: 50,
+  },
+  onscreen: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+}
 
 function PostsList({ posts }: { posts: Post[] }) {
-  const {matches: showLess} = useMediaQuery('(max-width: 1200px)')
+  const { matches: showLess } = useMediaQuery('(max-width: 1200px)')
   const postsToShow = useMemo(() => (showLess ? posts.slice(0, 2) : posts), [showLess, posts])
 
   return (
     <ul className={styles.list}>
       {postsToShow.map((post) => (
-        <li className={styles.item} key={post.id}>
+        <motion.li className={styles.item} key={post.id} variants={elementEntranceVariants}>
           <div className={styles.item_bar}>
             <span>
               <ClockIcon />
@@ -39,7 +54,7 @@ function PostsList({ posts }: { posts: Post[] }) {
               Read more
             </a>
           </Link>
-        </li>
+        </motion.li>
       ))}
     </ul>
   )

@@ -1,4 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   position: relative;
   transform-origin: left top;
   background-color: #fff;

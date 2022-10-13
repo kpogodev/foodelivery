@@ -3,10 +3,17 @@ import Watermark from 'assets/watermark-how-it-works.svg'
 import ConnectorLeft from 'assets/connector-left.svg'
 import ConnectorRight from 'assets/connector-right.svg'
 import StepItem from './step_item/StepItem'
+import { motion } from 'framer-motion'
 
 function HowItWorks() {
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial='offscreen'
+      whileInView='onscreen'
+      transition={{ staggerChildren: 0.1 }}
+      viewport={{ amount: 0.6, once: true }}
+    >
       <div className={styles.inner}>
         <Watermark className={styles.watermark} />
         <ConnectorLeft className={styles.connector_left} />
@@ -28,7 +35,7 @@ function HowItWorks() {
           description='Home or Office? Our courier will deliver your food to you at the time you choose.'
         />
       </div>
-    </div>
+    </motion.div>
   )
 }
 export default HowItWorks

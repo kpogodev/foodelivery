@@ -2,6 +2,7 @@ import CustomSelect from 'components/reusable/custom_select/CustomSelect'
 import { useContext } from 'react'
 import { MenuContext } from 'components/homepage/menu/MenuContext'
 import styles from './Filter.module.css'
+import { motion } from 'framer-motion'
 
 const genderOptions = ['All', 'Male', 'Female']
 const sizeOptions = ['All', 'Small', 'Medium', 'Large']

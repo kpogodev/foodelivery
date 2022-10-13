@@ -2,6 +2,33 @@ import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import CrossIcon from 'assets/cross.svg'
 import styles from './Media.module.css'
+import Portal from 'components/reusable/portal/Portal'
+
+const elementsEntranceVariants = {
+  offscreen: {
+    opacity: 0,
+    y: 100,
+  },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.3,
+    },
+  },
+}
+
+const videoEntranceVariants = {
+  offscreen: {
+    opacity: 0,
+  },
+  onscreen: {
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+    },
+  },
+}
 
 function Media() {
   const [showControls, setShowControls] = useState(false)
@@ -39,25 +66,39 @@ function Media() {
   }, [showVideoBox])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.inner}>
+    <motion.div
+      className={styles.container}
+      initial='offscreen'
+      whileInView='onscreen'
+      transition={{ staggerChildren: 0.05 }}
+      viewport={{ amount: 0.3, once: true }}
+    >
+      <motion.div className={styles.inner}>
         <div className={styles.content}>
-          <h2 className={styles.header}>You can watch cooking process translation</h2>
-          <p className={styles.text}>
+          <motion.h2 className={styles.header} variants={elementsEntranceVariants}>
+            You can watch cooking process translation
+          </motion.h2>
+          <motion.p className={styles.text} variants={elementsEntranceVariants}>
             Our kitchen employs highly qualiied cooks. We adhere to all sanitary standards, and these are not just
             words, because you can easily see this yourself
-          </p>
-          <button className={styles.button} onClick={toggleVideoBox}>
+          </motion.p>
+          <motion.button className={styles.button} onClick={toggleVideoBox} variants={elementsEntranceVariants}>
             play video
-          </button>
+          </motion.button>
         </div>
 
-        <motion.div className={styles.video} layoutId='video'>
-          <motion.video src='/placeholder.mp4' controls={showControls} playsInline poster='/placeholder.png' />
+        <motion.div className={styles.video} layoutId='video-wrap' variants={videoEntranceVariants}>
+          <motion.video
+            layoutId='video-player'
+            src='/placeholder.mp4'
+            controls={showControls}
+            playsInline
+            poster='/placeholder.png'
+          />
         </motion.div>
 
-        <AnimatePresence>
-          {showVideoBox && (
+        {showVideoBox && (
+          <Portal>
             <motion.div
               className={styles.video_background}
               initial={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
@@ -65,8 +106,9 @@ function Media() {
               exit={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
               onClick={toggleVideoBox}
             >
-              <motion.div layoutId='video' className={styles.video_box}>
+              <motion.div layoutId='video-wrap' className={styles.video_box}>
                 <motion.video
+                  layoutId='video-player'
                   ref={videoRef}
                   src='/placeholder.mp4'
                   controls={showControls}
@@ -77,7 +119,7 @@ function Media() {
                 <motion.button
                   className={styles.close_button}
                   initial={{ scale: 0 }}
-                  animate={{ scale: 1, transition: { duration: 0.5 } }}
+                  animate={{ scale: 1, transition: { duration: 0.5, delay: 0.2 } }}
                   exit={{ scale: 0 }}
                   onClick={toggleVideoBox}
                 >
@@ -85,10 +127,10 @@ function Media() {
                 </motion.button>
               </motion.div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
+          </Portal>
+        )}
+      </motion.div>
+    </motion.div>
   )
 }
 
