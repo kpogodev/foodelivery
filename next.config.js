@@ -10,6 +10,9 @@ const nextConfig = {
     return config
   },
   experimental: { images: { allowFutureImage: true } },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 }
 
 module.exports = nextConfig

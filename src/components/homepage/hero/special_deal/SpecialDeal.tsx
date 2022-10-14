@@ -1,50 +1,51 @@
-import React from 'react'
-import styles from './SpecialDeal.module.css'
 import Link from 'next/link'
-import NutritionTabel from 'components/reusable/nutrition_tabel/NutritionTabel'
+import { useContext } from 'react'
+import { HeroContext } from 'context/HeroContext'
 import { AnimatePresence, motion } from 'framer-motion'
+import NutritionTabel from 'components/reusable/nutrition_tabel/NutritionTabel'
 import { heroVariants } from 'utils/framer-animations'
-import { Meal } from 'types'
-import { v4 as uuid } from 'uuid'
+import styles from './SpecialDeal.module.css'
 
-function SpecialDeal({ data }: { data: Meal }) {
+function SpecialDeal({ slide }: { slide: number }) {
+  const { meals } = useContext(HeroContext)
+
   return (
     <div className={styles.container}>
       <AnimatePresence mode='wait'>
         <motion.h2
-          key={uuid()}
+          key={meals[slide].id}
           className={styles.header}
           variants={heroVariants}
           initial='hidden'
           animate='visible'
           exit='hidden'
         >
-          {data.name}
+          {meals[slide].attributes.name}
         </motion.h2>
       </AnimatePresence>
       <AnimatePresence mode='wait'>
         <motion.p
-          key={uuid()}
+          key={meals[slide].id}
           className={styles.description}
           variants={heroVariants}
           initial='hidden'
           animate='visible'
           exit='hidden'
         >
-          {data.description}
+          {meals[slide].attributes.description}
         </motion.p>
       </AnimatePresence>
       <NutritionTabel
-        calories={data.nutritions.calories}
-        fats={data.nutritions.fats}
-        proteins={data.nutritions.proteins}
+        calories={meals[slide].attributes.calories}
+        fats={meals[slide].attributes.fats}
+        proteins={meals[slide].attributes.proteins}
         withAnimation
       />
       <Link href='/'>
         <a className={styles.cta}>
           <AnimatePresence mode='wait'>
-            <motion.span key={uuid()} variants={heroVariants} initial='hidden' animate='visible' exit='hidden'>
-              £{data.price}
+            <motion.span key={meals[slide].id} variants={heroVariants} initial='hidden' animate='visible' exit='hidden'>
+              £{meals[slide].attributes.price}
             </motion.span>
           </AnimatePresence>
           <span>order now</span>
@@ -58,13 +59,13 @@ function SpecialDeal({ data }: { data: Meal }) {
             initial='hidden'
             animate='visible'
             exit='hidden'
-            key={uuid()}
+            key={meals[slide].id}
           >
-            0{data.id}
+            {`${slide < 9 ? '0' : ''}${slide + 1}`}
           </motion.span>
         </AnimatePresence>
         <div className={styles.counter_divider}></div>
-        <span className={styles.counter_total}>06</span>
+        <span className={styles.counter_total}>{`${meals.length < 10 ? '0' : ''}${meals.length}`}</span>
       </div>
     </div>
   )
