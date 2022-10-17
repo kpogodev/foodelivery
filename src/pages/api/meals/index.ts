@@ -19,6 +19,7 @@ const mealsValidator = z.object({
         slug: z.string(),
         description: z.string(),
         price: z.number(),
+        size: z.string(),
         calories: z.number(),
         fats: z.number(),
         proteins: z.number(),
@@ -45,12 +46,12 @@ const mealsValidator = z.object({
                   mime: z.string(),
                   size: z.number(),
                   url: z.string(),
-                  previewUrl: z.string().optional(),
+                  previewUrl: z.string().nullable(),
                   provider: z.string(),
                   provider_metadata: z.object({
                     public_id: z.string(),
                     resource_type: z.string(),
-                  }),
+                  }).nullable(),
                   formats: z.object({
                     thumbnail: z.object({
                       name: z.string(),
@@ -60,13 +61,13 @@ const mealsValidator = z.object({
                       width: z.number(),
                       height: z.number(),
                       size: z.number(),
-                      path: z.string().optional(),
+                      path: z.string().nullable(),
                       url: z.string(),
                       provider_metadata: z.object({
                         public_id: z.string(),
                         resource_type: z.string(),
-                      }),
-                    }),
+                      }).nullable(),
+                    }).optional(),
                     small: z.object({
                       name: z.string(),
                       hash: z.string(),
@@ -75,13 +76,13 @@ const mealsValidator = z.object({
                       width: z.number(),
                       height: z.number(),
                       size: z.number(),
-                      path: z.string().optional(),
+                      path: z.string().nullable(),
                       url: z.string(),
                       provider_metadata: z.object({
                         public_id: z.string(),
                         resource_type: z.string(),
-                      }),
-                    }),
+                      }).nullable(),
+                    }).optional(),
                     medium: z.object({
                       name: z.string(),
                       hash: z.string(),
@@ -90,13 +91,13 @@ const mealsValidator = z.object({
                       width: z.number(),
                       height: z.number(),
                       size: z.number(),
-                      path: z.string().optional(),
+                      path: z.string().nullable(),
                       url: z.string(),
                       provider_metadata: z.object({
                         public_id: z.string(),
                         resource_type: z.string(),
-                      }),
-                    }),
+                      }).nullable(),
+                    }).optional(),
                     large: z.object({
                       name: z.string(),
                       hash: z.string(),
@@ -105,32 +106,31 @@ const mealsValidator = z.object({
                       width: z.number(),
                       height: z.number(),
                       size: z.number(),
-                      path: z.string().optional(),
+                      path: z.string().nullable(),
                       url: z.string(),
                       provider_metadata: z.object({
                         public_id: z.string(),
                         resource_type: z.string(),
-                      }),
-                    }),
+                      }).nullable(),
+                    }).optional(),
                   }),
-                  created_at: z.string(),
-                  updated_at: z.string(),
+                  createdAt: z.string(),
+                  updatedAt: z.string(),
                 }),
               })
             ),
           })
-          .optional(),
+          .nullable(),
       }),
     })
   ),
 })
 
-export type MealsType = z.infer<typeof mealsValidator>
+export type MealsAPIResponse = z.infer<typeof mealsValidator>
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<MealsType>) {
-  const response = await fetch(`${API_URL}/meals?populate[]=images&populate[]=nutritions`)
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const response = await fetch(`${API_URL}/meals?populate[]=images`)
   const data = await response.json()
-
-  console.log(data)
-  res.status(200).json(data)
+  const responseData = mealsValidator.parse(data)
+  res.status(200).json(responseData)
 }

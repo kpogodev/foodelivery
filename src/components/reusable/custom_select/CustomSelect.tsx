@@ -1,4 +1,4 @@
-import React, { useId } from 'react'
+import { useId } from 'react'
 import styles from './CustomSelect.module.css'
 import { v4 as uuid } from 'uuid'
 

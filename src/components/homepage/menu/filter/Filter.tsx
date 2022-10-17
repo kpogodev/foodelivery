@@ -1,6 +1,6 @@
 import CustomSelect from 'components/reusable/custom_select/CustomSelect'
 import { useContext } from 'react'
-import { MenuContext } from 'components/homepage/menu/MenuContext'
+import { MenuContext } from 'context/MenuContext'
 import styles from './Filter.module.css'
 import { motion } from 'framer-motion'
 

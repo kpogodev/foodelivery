@@ -6,12 +6,13 @@ import About from 'components/homepage/about/About'
 import Hero from 'components/homepage/hero/Hero'
 import HeroContextProvider from 'context/HeroContext'
 import Menu from 'components/homepage/menu/Menu'
+import MenuContextProvider from 'context/MenuContext'
 import Media from 'components/homepage/media/Media'
 import HowItWorks from 'components/homepage/how_it_works/HowItWorks'
 import LatestPosts from 'components/homepage/latest_posts/LatestPosts'
 import GetInTouch from 'components/homepage/get_in_touch/GetInTouch'
 import { NEXT_URL } from 'config'
-import { MealsType } from './api/meals'
+import { MealsAPIResponse } from './api/meals'
 
 const Home = ({ mealsData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -21,7 +22,13 @@ const Home = ({ mealsData }: InferGetStaticPropsType<typeof getStaticProps>) => 
         <Hero />
       </HeroContextProvider>
       <About />
-      <Menu />
+      <MenuContextProvider
+        initialState={{
+          meals: mealsData,
+        }}
+      >
+        <Menu />
+      </MenuContextProvider>
       <Media />
       <HowItWorks />
       <LatestPosts />
@@ -32,7 +39,7 @@ const Home = ({ mealsData }: InferGetStaticPropsType<typeof getStaticProps>) => 
 
 export async function getStaticProps() {
   const mealsReponse = await fetch(`${NEXT_URL}/api/meals`)
-  const mealsData = await mealsReponse.json() as MealsType
+  const mealsData = (await mealsReponse.json()) as MealsAPIResponse
 
   return {
     props: {

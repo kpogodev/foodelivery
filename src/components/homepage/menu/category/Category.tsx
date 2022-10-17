@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, A11y } from 'swiper'
-import { MenuContext } from 'components/homepage/menu/MenuContext'
+import { MenuContext } from 'context/MenuContext'
 import useMediaQuery from 'hooks/useMediaQuery'
 import MealButton from 'components/reusable/meal_button/MealButton'
 import MealSwiperSlide from 'components/reusable/meal_swiper_slide/MealSwiperSlide'

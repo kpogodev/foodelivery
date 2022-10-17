@@ -20,6 +20,7 @@ function Hero() {
     return () => clearInterval(interval)
   }, [meals.length])
 
+
   return (
     <div className={styles.container}>
       <div className={styles.inner}>
