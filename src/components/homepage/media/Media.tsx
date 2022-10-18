@@ -8,7 +8,7 @@ interface MediaProps {
   header: string
   text: string
   videoSrc: string
-  posterSrc?: string | null
+  posterSrc: string
 }
 
 const elementsEntranceVariants = {
@@ -114,7 +114,7 @@ function Media({ header, text, videoSrc, posterSrc }: MediaProps) {
                   controls={showControls}
                   playsInline
                   preload='true'
-                  poster={posterSrc ? posterSrc : '/placeholder.png'}
+                  poster={posterSrc}
                 />
                 <motion.button
                   className={styles.close_button}

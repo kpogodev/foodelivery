@@ -36,7 +36,7 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
         header={homepageData.data.attributes.media_header}
         text={homepageData.data.attributes.media_text}
         videoSrc={homepageData.data.attributes.media_video.data.attributes.url}
-        posterSrc={homepageData.data.attributes.media_video.data.attributes?.previewUrl}
+        posterSrc='/placeholder.png'
       />
       <HowItWorks />
       <LatestPosts />
