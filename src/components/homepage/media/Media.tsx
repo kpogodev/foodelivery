@@ -114,7 +114,7 @@ function Media({ header, text, videoSrc, posterSrc }: MediaProps) {
                   controls={showControls}
                   playsInline
                   preload='true'
-                  poster={posterSrc!}
+                  poster={posterSrc ? posterSrc : '/placeholder.png'}
                 />
                 <motion.button
                   className={styles.close_button}
