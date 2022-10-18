@@ -13,23 +13,31 @@ import LatestPosts from 'components/homepage/latest_posts/LatestPosts'
 import GetInTouch from 'components/homepage/get_in_touch/GetInTouch'
 import { NEXT_URL } from 'config'
 import { MealsAPIResponse } from './api/meals'
+import { HomepageAPIResponse } from './api/homepage'
 
-const Home = ({ mealsData }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <motion.main key='home-page' {...pageTransition}>
-      <Meta />
+      <Meta
+        title={homepageData.data.attributes.page_title}
+        description={homepageData.data.attributes.page_description}
+      />
       <HeroContextProvider data={mealsData}>
         <Hero />
       </HeroContextProvider>
-      <About />
-      <MenuContextProvider
-        initialState={{
-          meals: mealsData,
-        }}
-      >
+      <About
+        description={homepageData.data.attributes.about_us_text}
+        image={homepageData.data.attributes.about_us_image.data.attributes.url}
+      />
+      <MenuContextProvider initialState={{ meals: mealsData }}>
         <Menu />
       </MenuContextProvider>
-      <Media />
+      <Media
+        header={homepageData.data.attributes.media_header}
+        text={homepageData.data.attributes.media_text}
+        videoSrc={homepageData.data.attributes.media_video.data.attributes.url}
+        posterSrc={homepageData.data.attributes.media_video.data.attributes?.previewUrl}
+      />
       <HowItWorks />
       <LatestPosts />
       <GetInTouch />
@@ -41,9 +49,13 @@ export async function getStaticProps() {
   const mealsReponse = await fetch(`${NEXT_URL}/api/meals`)
   const mealsData = (await mealsReponse.json()) as MealsAPIResponse
 
+  const homepageReponse = await fetch(`${NEXT_URL}/api/homepage`)
+  const homepageData = (await homepageReponse.json()) as HomepageAPIResponse
+
   return {
     props: {
       mealsData: mealsData,
+      homepageData: homepageData,
     },
   }
 }

@@ -4,6 +4,13 @@ import CrossIcon from 'assets/cross.svg'
 import styles from './Media.module.css'
 import Portal from 'components/reusable/portal/Portal'
 
+interface MediaProps {
+  header: string
+  text: string
+  videoSrc: string
+  posterSrc?: string | null
+}
+
 const elementsEntranceVariants = {
   offscreen: {
     opacity: 0,
@@ -30,7 +37,7 @@ const videoEntranceVariants = {
   },
 }
 
-function Media() {
+function Media({ header, text, videoSrc, posterSrc }: MediaProps) {
   const [showControls, setShowControls] = useState(false)
   const [showVideoBox, setShowVideoBox] = useState(false)
 
@@ -76,11 +83,10 @@ function Media() {
       <motion.div className={styles.inner}>
         <div className={styles.content}>
           <motion.h2 className={styles.header} variants={elementsEntranceVariants}>
-            You can watch cooking process translation
+            {header}
           </motion.h2>
           <motion.p className={styles.text} variants={elementsEntranceVariants}>
-            Our kitchen employs highly qualiied cooks. We adhere to all sanitary standards, and these are not just
-            words, because you can easily see this yourself
+            {text}
           </motion.p>
           <motion.button className={styles.button} onClick={toggleVideoBox} variants={elementsEntranceVariants}>
             play video
@@ -88,13 +94,7 @@ function Media() {
         </div>
 
         <motion.div className={styles.video} layoutId='video-wrap' variants={videoEntranceVariants}>
-          <motion.video
-            layoutId='video-player'
-            src='/placeholder.mp4'
-            controls={showControls}
-            playsInline
-            poster='/placeholder.png'
-          />
+          <motion.video layoutId='video-player' src={videoSrc} controls={showControls} playsInline poster={posterSrc} />
         </motion.div>
 
         {showVideoBox && (
@@ -110,11 +110,11 @@ function Media() {
                 <motion.video
                   layoutId='video-player'
                   ref={videoRef}
-                  src='/placeholder.mp4'
+                  src={videoSrc}
                   controls={showControls}
                   playsInline
                   preload='true'
-                  poster='/placeholder.png'
+                  poster={posterSrc!}
                 />
                 <motion.button
                   className={styles.close_button}
