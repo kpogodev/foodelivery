@@ -1,6 +1,7 @@
 import styles from './MealCard.module.css'
 import Image from 'next/image'
 import NutritionTabel from 'components/reusable/nutrition_tabel/NutritionTabel'
+import { motion } from 'framer-motion'
 
 interface MealCardProps {
   image?: string
@@ -8,11 +9,36 @@ interface MealCardProps {
   calories: number | string
   fats: number | string
   proteins: number | string
+  slug: string
 }
 
-function MealCard({ image, name, calories, fats, proteins }: MealCardProps) {
+export const cardVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0,
+    transition: { duration: 0.35 },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.45,
+      delay: 0.1,
+    },
+  },
+}
+
+function MealCard({ image, name, calories, fats, proteins, slug }: MealCardProps) {
   return (
-    <div className={styles.container}>
+    <motion.div
+      key={slug}
+      className={styles.container}
+      variants={cardVariants}
+      initial='hidden'
+      animate='visible'
+      exit='hidden'
+      layoutId={slug}
+    >
       <div className={styles.image}>
         <Image src={image!} layout='fill' alt='' />
       </div>
@@ -20,7 +46,7 @@ function MealCard({ image, name, calories, fats, proteins }: MealCardProps) {
         <h3 className={styles.title}>{name}</h3>
         <NutritionTabel calories={calories} fats={fats} proteins={proteins} />
       </div>
-    </div>
+    </motion.div>
   )
 }
 

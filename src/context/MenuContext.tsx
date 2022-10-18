@@ -1,6 +1,5 @@
 import { createContext, useReducer } from 'react'
 import { MealsAPIResponse } from 'pages/api/meals'
-import { ChildProcess } from 'child_process'
 
 interface InitialState {
   meals: MealsAPIResponse
@@ -66,7 +65,6 @@ const runFilters = (
 ) => {
   let filteredMeals = meals.data.filter((meal) => meal.attributes.category === category.toLowerCase())
 
-  console.table(filteredMeals)
   if (genderFilter === 'All' && sizeFilter === 'All' && preferenceFilter === 'All') return filteredMeals
 
   if (sizeFilter !== 'All') {
