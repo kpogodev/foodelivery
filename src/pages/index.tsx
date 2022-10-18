@@ -11,16 +11,15 @@ import Media from 'components/homepage/media/Media'
 import HowItWorks from 'components/homepage/how_it_works/HowItWorks'
 import LatestPosts from 'components/homepage/latest_posts/LatestPosts'
 import GetInTouch from 'components/homepage/get_in_touch/GetInTouch'
-import { NEXT_URL } from 'config'
-import { MealsAPIResponse } from './api/meals'
-import { HomepageAPIResponse } from './api/homepage'
+import { loadHomepageData } from 'lib/loadHomepageData'
+import { loadMeals } from 'lib/loadMeals'
 
 const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <motion.main key='home-page' {...pageTransition}>
       <Meta
         title={homepageData.data.attributes.page_title}
-        description={homepageData.data.attributes.page_description}
+        description={homepageData.data?.attributes.page_description}
       />
       <HeroContextProvider data={mealsData}>
         <Hero />
@@ -46,16 +45,13 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
 }
 
 export async function getStaticProps() {
-  const mealsReponse = await fetch(`${NEXT_URL}/api/meals`)
-  const mealsData = (await mealsReponse.json()) as MealsAPIResponse
-
-  const homepageReponse = await fetch(`${NEXT_URL}/api/homepage`)
-  const homepageData = (await homepageReponse.json()) as HomepageAPIResponse
+  const homepageData = await loadHomepageData()
+  const mealsData = await loadMeals()
 
   return {
     props: {
-      mealsData: mealsData,
       homepageData: homepageData,
+      mealsData: mealsData,
     },
   }
 }

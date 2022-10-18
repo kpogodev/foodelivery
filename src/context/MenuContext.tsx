@@ -1,5 +1,5 @@
 import { createContext, useReducer } from 'react'
-import { MealsAPIResponse } from 'pages/api/meals'
+import { MealsAPIResponse } from 'lib/loadMeals'
 
 interface InitialState {
   meals: MealsAPIResponse

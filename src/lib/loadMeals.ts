@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
 import { API_URL } from 'config'
 
@@ -128,9 +127,12 @@ const mealsValidator = z.object({
 
 export type MealsAPIResponse = z.infer<typeof mealsValidator>
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export const loadMeals = async (): Promise<MealsAPIResponse> => {
   const response = await fetch(`${API_URL}/meals?populate[]=images`)
   const data = await response.json()
   const responseData = mealsValidator.parse(data)
-  res.status(200).json(responseData)
+
+  return responseData
 }
+
+

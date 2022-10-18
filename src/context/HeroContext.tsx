@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { MealsAPIResponse } from 'pages/api/meals'
+import { MealsAPIResponse } from 'lib/loadMeals'
 
 type UseHeroStateManagerResult = ReturnType<typeof useHeroStateManager>
 export const HeroContext = createContext<UseHeroStateManagerResult>({

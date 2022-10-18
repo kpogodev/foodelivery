@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
 import { API_URL } from 'config'
 
@@ -158,9 +157,9 @@ const dataValidator = z.object({
 
 export type HomepageAPIResponse = z.infer<typeof dataValidator>
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export const loadHomepageData = async (): Promise<HomepageAPIResponse> => {
   const response = await fetch(`${API_URL}/homepage?populate[]=about_us_image&populate[]=media_video`)
   const data = await response.json()
   const responseData = dataValidator.parse(data)
-  res.status(200).json(responseData)
+  return responseData
 }
