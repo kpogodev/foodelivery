@@ -53,6 +53,7 @@ export async function getStaticProps() {
       homepageData: homepageData,
       mealsData: mealsData,
     },
+    revalidate: 10,
   }
 }
 
