@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import AboutImg from 'assets/home-about.png'
 import styles from './About.module.css'
 import { motion } from 'framer-motion'
-import { string } from 'zod'
 
 const imageEntranceVariants = {
   offscreen: {
@@ -56,11 +54,11 @@ function About({ description, image }: AboutProps) {
           <motion.p className={styles.text} variants={elementsEntranceVariants}>
             {description}
           </motion.p>
-          <Link href='/about'>
-            <motion.a className={styles.cta} variants={elementsEntranceVariants}>
-              read more
-            </motion.a>
-          </Link>
+          <motion.div variants={elementsEntranceVariants}>
+            <Link href='/about'>
+              <a className={styles.cta}>read more</a>
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>

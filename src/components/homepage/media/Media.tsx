@@ -28,11 +28,15 @@ const elementsEntranceVariants = {
 const videoEntranceVariants = {
   offscreen: {
     opacity: 0,
+    scale: 0,
+    filter: 'blur(2px)',
   },
   onscreen: {
+    scale: 1,
     opacity: 1,
+    filter: 'blur(0)',
     transition: {
-      duration: 1.5,
+      duration: 1,
     },
   },
 }
@@ -106,7 +110,13 @@ function Media({ header, text, videoSrc, posterSrc }: MediaProps) {
               exit={{ backgroundColor: 'rgba(255, 125, 51, 0)' }}
               onClick={toggleVideoBox}
             >
-              <motion.div layoutId='video-wrap' className={styles.video_box}>
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1, transition: { duration: 0.5 } }}
+                exit={{ scale: 0, opacity: 0 }}
+                layoutId='video-wrap'
+                className={styles.video_box}
+              >
                 <motion.video
                   layoutId='video-player'
                   ref={videoRef}

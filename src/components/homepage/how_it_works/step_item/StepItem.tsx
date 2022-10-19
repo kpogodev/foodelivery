@@ -39,7 +39,13 @@ const imageEntranceVariants = {
 
 function StepItem({ title, description, image, reverse }: StepItemProps) {
   return (
-    <div className={`${styles.container} ${reverse ? styles.reversed : ''}`}>
+    <motion.div
+      className={`${styles.container} ${reverse ? styles.reversed : ''}`}
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{ amount: 0.6, once: true }}
+      transition={{ staggerChildren: 0.1 }}
+    >
       <motion.div className={styles.img_wrap} variants={imageEntranceVariants}>
         <Image className={styles.img} src={image} alt='Step 1' width={1024} height={768} />
       </motion.div>
@@ -51,7 +57,7 @@ function StepItem({ title, description, image, reverse }: StepItemProps) {
           {description}
         </motion.p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 export default StepItem

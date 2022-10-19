@@ -36,6 +36,10 @@ function Category() {
       ctx.handleCategoryChange(value)
       setSelectedCategory(value)
     },
+    onInit: (swiper: any) => {
+      const idx = [...swiper.slides].findIndex((slide: any) => slide.dataset.meal === ctx.categoryFilter)
+      swiper.slideTo(idx)
+    },
   }
 
   const mobileComponent = (

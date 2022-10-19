@@ -11,8 +11,8 @@ import Media from 'components/homepage/media/Media'
 import HowItWorks from 'components/homepage/how_it_works/HowItWorks'
 import LatestPosts from 'components/homepage/latest_posts/LatestPosts'
 import GetInTouch from 'components/homepage/get_in_touch/GetInTouch'
-import { loadHomepageData } from 'lib/loadHomepageData'
-import { loadMeals } from 'lib/loadMeals'
+import { fetchHomepageData } from 'lib/fetchHomepageData'
+import { fetchMealsData } from 'lib/fetchMealsData'
 
 const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -35,7 +35,7 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
         header={homepageData.data.attributes.media_header}
         text={homepageData.data.attributes.media_text}
         videoSrc={homepageData.data.attributes.media_video.data.attributes.url}
-        posterSrc='/placeholder.png'
+        posterSrc='/media_video_placeholder.webp'
       />
       <HowItWorks />
       <LatestPosts />
@@ -45,15 +45,15 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
 }
 
 export async function getStaticProps() {
-  const homepageData = await loadHomepageData()
-  const mealsData = await loadMeals()
+  const homepageData = await fetchHomepageData()
+  const mealsData = await fetchMealsData()
 
   return {
     props: {
       homepageData: homepageData,
       mealsData: mealsData,
     },
-    revalidate: 10,
+    revalidate: 60,
   }
 }
 

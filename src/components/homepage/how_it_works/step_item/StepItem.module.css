@@ -49,10 +49,6 @@
     flex-direction: row;
   }
 
-  .reversed {
-    flex-direction: row-reverse;
-  }
-
   .body {
     align-items: flex-start;
     max-width: 31.5rem;

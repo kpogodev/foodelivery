@@ -127,7 +127,7 @@ const mealsValidator = z.object({
 
 export type MealsAPIResponse = z.infer<typeof mealsValidator>
 
-export const loadMeals = async (): Promise<MealsAPIResponse> => {
+export const fetchMealsData = async (): Promise<MealsAPIResponse> => {
   const response = await fetch(`${API_URL}/meals?populate[]=images`)
   const data = await response.json()
   const responseData = mealsValidator.parse(data)

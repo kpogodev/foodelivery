@@ -1,5 +1,5 @@
 import styles from './MealCard.module.css'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import NutritionTabel from 'components/reusable/nutrition_tabel/NutritionTabel'
 import { motion } from 'framer-motion'
 
@@ -40,7 +40,7 @@ function MealCard({ image, name, calories, fats, proteins, slug }: MealCardProps
       layoutId={slug}
     >
       <div className={styles.image}>
-        <Image src={image!} layout='fill' alt='' />
+        <Image src={image!} alt='' fill priority />
       </div>
       <div className={styles.body}>
         <h3 className={styles.title}>{name}</h3>

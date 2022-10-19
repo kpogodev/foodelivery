@@ -157,7 +157,7 @@ const dataValidator = z.object({
 
 export type HomepageAPIResponse = z.infer<typeof dataValidator>
 
-export const loadHomepageData = async (): Promise<HomepageAPIResponse> => {
+export const fetchHomepageData = async (): Promise<HomepageAPIResponse> => {
   const response = await fetch(`${API_URL}/homepage?populate[]=about_us_image&populate[]=media_video`)
   const data = await response.json()
   const responseData = dataValidator.parse(data)
