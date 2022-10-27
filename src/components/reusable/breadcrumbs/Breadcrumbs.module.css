@@ -1,0 +1,41 @@
+.container {
+  max-width: 100%;
+  width: fit-content;
+  padding-bottom: 0.3rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+}
+
+.list > * + *::before {
+  content: '/';
+  color: var(--text-cl);
+  font-size: clamp(1.4rem, 1.33vw, 1.6rem);
+  font-weight: 500;
+  margin-inline: 0.5rem;
+}
+
+.item {
+  position: relative;
+}
+
+.link {
+  font-size: clamp(1.4rem, 1.33vw, 1.6rem);
+  font-weight: 500;
+  color: var(--text-cl);
+  transition: opacity 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  opacity: 0.75;
+}
+
+.current {
+  font-size: clamp(1.4rem, 1.33vw, 1.6rem);
+  font-weight: 700;
+  color: var(--text-cl);
+}

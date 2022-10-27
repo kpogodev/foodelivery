@@ -1,8 +1,21 @@
 // Vairants for transition between pages
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+}
+
 export const pageTransition = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
+  variants: pageVariants,
+  initial: 'initial',
+  animate: 'animate',
+  exit: 'exit',
   transition: { duration: 0.2 },
 }
 

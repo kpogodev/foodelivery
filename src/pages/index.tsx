@@ -16,7 +16,7 @@ import { fetchMealsData } from 'lib/fetchMealsData'
 
 const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <motion.main key='home-page' {...pageTransition}>
+    <motion.main {...pageTransition}>
       <Meta
         title={homepageData.data.attributes.page_title}
         description={homepageData.data?.attributes.page_description}
