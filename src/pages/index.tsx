@@ -10,7 +10,7 @@ import MenuContextProvider from 'context/MenuContext'
 import Media from 'components/home_page/media/Media'
 import HowItWorks from 'components/home_page/how_it_works/HowItWorks'
 import LatestPosts from 'components/home_page/latest_posts/LatestPosts'
-import GetInTouch from 'components/home_page/get_in_touch/GetInTouch'
+import GetInTouch from 'components/reusable/get_in_touch/GetInTouch'
 import { fetchHomepageData } from 'lib/fetchHomepageData'
 import { fetchMealsData } from 'lib/fetchMealsData'
 
