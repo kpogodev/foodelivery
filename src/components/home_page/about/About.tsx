@@ -34,7 +34,9 @@ interface AboutProps {
   image: string
 }
 
+
 function About({ description, image }: AboutProps) {
+
   return (
     <motion.div
       className={styles.container}
