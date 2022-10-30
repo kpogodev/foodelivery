@@ -11,7 +11,7 @@ import Partners from 'components/about_page/partners/Partners'
 const About: NextPage = () => {
   return (
     <motion.main {...pageTransition}>
-      <PageHeading title='About Us' backgroundColor='#FFBE34' textColor='#2E294E' />
+      <PageHeading title='About Us' backgroundColor='#FFBE34' textColor='#2E294E' imgSrc='/salmon.webp' />
       <AboutMain />
       <Counter />
       <Media

@@ -17,9 +17,12 @@
 }
 
 .inner {
+  position: relative;
   width: 100%;
   margin-inline: auto;
   padding-block: clamp(2rem, 6vw, 8.5rem);
+
+  overflow: hidden;
 }
 
 .title {
@@ -28,6 +31,24 @@
   font-family: var(--font-secondary), sans-serif;
   color: var(--text-cl);
   text-transform: uppercase;
+}
+
+.img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: clamp(15rem, 25vw, 40rem);
+  aspect-ratio: 1 / 1;
+  transform: translateY(-50%);
+  z-index: -1;
+  opacity: 0.15;
+}
+
+@media (min-width: 769px) {
+  .img {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 1201px) {
