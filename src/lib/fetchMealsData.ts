@@ -1,6 +1,24 @@
 import { z } from 'zod'
 import { API_URL } from 'config'
 
+const ImageFormatObject = z.object({
+  name: z.string(),
+  hash: z.string(),
+  ext: z.string(),
+  mime: z.string(),
+  width: z.number(),
+  height: z.number(),
+  size: z.number(),
+  path: z.string().nullable(),
+  url: z.string(),
+  provider_metadata: z
+    .object({
+      public_id: z.string(),
+      resource_type: z.string(),
+    })
+    .nullable(),
+}).optional()
+
 const mealsValidator = z.object({
   meta: z.object({
     pagination: z.object({
@@ -47,71 +65,17 @@ const mealsValidator = z.object({
                   url: z.string(),
                   previewUrl: z.string().nullable(),
                   provider: z.string(),
-                  provider_metadata: z.object({
-                    public_id: z.string(),
-                    resource_type: z.string(),
-                  }).nullable(),
+                  provider_metadata: z
+                    .object({
+                      public_id: z.string(),
+                      resource_type: z.string(),
+                    })
+                    .nullable(),
                   formats: z.object({
-                    thumbnail: z.object({
-                      name: z.string(),
-                      hash: z.string(),
-                      ext: z.string(),
-                      mime: z.string(),
-                      width: z.number(),
-                      height: z.number(),
-                      size: z.number(),
-                      path: z.string().nullable(),
-                      url: z.string(),
-                      provider_metadata: z.object({
-                        public_id: z.string(),
-                        resource_type: z.string(),
-                      }).nullable(),
-                    }).optional(),
-                    small: z.object({
-                      name: z.string(),
-                      hash: z.string(),
-                      ext: z.string(),
-                      mime: z.string(),
-                      width: z.number(),
-                      height: z.number(),
-                      size: z.number(),
-                      path: z.string().nullable(),
-                      url: z.string(),
-                      provider_metadata: z.object({
-                        public_id: z.string(),
-                        resource_type: z.string(),
-                      }).nullable(),
-                    }).optional(),
-                    medium: z.object({
-                      name: z.string(),
-                      hash: z.string(),
-                      ext: z.string(),
-                      mime: z.string(),
-                      width: z.number(),
-                      height: z.number(),
-                      size: z.number(),
-                      path: z.string().nullable(),
-                      url: z.string(),
-                      provider_metadata: z.object({
-                        public_id: z.string(),
-                        resource_type: z.string(),
-                      }).nullable(),
-                    }).optional(),
-                    large: z.object({
-                      name: z.string(),
-                      hash: z.string(),
-                      ext: z.string(),
-                      mime: z.string(),
-                      width: z.number(),
-                      height: z.number(),
-                      size: z.number(),
-                      path: z.string().nullable(),
-                      url: z.string(),
-                      provider_metadata: z.object({
-                        public_id: z.string(),
-                        resource_type: z.string(),
-                      }).nullable(),
-                    }).optional(),
+                    thumbnail: ImageFormatObject,
+                    small: ImageFormatObject,
+                    medium: ImageFormatObject,
+                    large: ImageFormatObject,
                   }),
                   createdAt: z.string(),
                   updatedAt: z.string(),
@@ -134,5 +98,3 @@ export const fetchMealsData = async (): Promise<MealsAPIResponse> => {
 
   return responseData
 }
-
-

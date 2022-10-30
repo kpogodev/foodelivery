@@ -41,7 +41,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <NavigationMobile topics={['About', 'Menu', 'Services', 'News', 'FAQ', 'Contact']} />
       <motion.div className={styles.container} variants={layoutAnimation} animate={ctx.isOpen ? 'open' : 'closed'}>
         <Header />
-        <AnimatePresence mode='wait' initial={false}>
+        <AnimatePresence mode='wait'>
           {children}
         </AnimatePresence>
         <Footer />

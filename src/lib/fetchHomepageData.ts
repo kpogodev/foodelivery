@@ -1,15 +1,41 @@
 import { z } from 'zod'
 import { API_URL } from 'config'
 
+const ImageFormatObject = z
+  .object({
+    name: z.string(),
+    hash: z.string(),
+    ext: z.string(),
+    mime: z.string(),
+    width: z.number(),
+    height: z.number(),
+    size: z.number(),
+    path: z.string().nullable(),
+    url: z.string(),
+    provider_metadata: z
+      .object({
+        public_id: z.string(),
+        resource_type: z.string(),
+      })
+      .nullable(),
+  })
+  .optional()
+
 const dataValidator = z.object({
-  meta: z.object({
-    pagination: z.object({
-      total: z.number(),
-      page: z.number(),
-      pageSize: z.number(),
-      pageCount: z.number(),
-    }).optional().nullable(),
-  }).nullable().optional(),
+  meta: z
+    .object({
+      pagination: z
+        .object({
+          total: z.number(),
+          page: z.number(),
+          pageSize: z.number(),
+          pageCount: z.number(),
+        })
+        .optional()
+        .nullable(),
+    })
+    .nullable()
+    .optional(),
   data: z.object({
     id: z.number(),
     attributes: z.object({
@@ -39,82 +65,10 @@ const dataValidator = z.object({
               })
               .nullable(),
             formats: z.object({
-              thumbnail: z
-                .object({
-                  name: z.string(),
-                  hash: z.string(),
-                  ext: z.string(),
-                  mime: z.string(),
-                  width: z.number(),
-                  height: z.number(),
-                  size: z.number(),
-                  path: z.string().nullable(),
-                  url: z.string(),
-                  provider_metadata: z
-                    .object({
-                      public_id: z.string(),
-                      resource_type: z.string(),
-                    })
-                    .nullable(),
-                })
-                .optional(),
-              small: z
-                .object({
-                  name: z.string(),
-                  hash: z.string(),
-                  ext: z.string(),
-                  mime: z.string(),
-                  width: z.number(),
-                  height: z.number(),
-                  size: z.number(),
-                  path: z.string().nullable(),
-                  url: z.string(),
-                  provider_metadata: z
-                    .object({
-                      public_id: z.string(),
-                      resource_type: z.string(),
-                    })
-                    .nullable(),
-                })
-                .optional(),
-              medium: z
-                .object({
-                  name: z.string(),
-                  hash: z.string(),
-                  ext: z.string(),
-                  mime: z.string(),
-                  width: z.number(),
-                  height: z.number(),
-                  size: z.number(),
-                  path: z.string().nullable(),
-                  url: z.string(),
-                  provider_metadata: z
-                    .object({
-                      public_id: z.string(),
-                      resource_type: z.string(),
-                    })
-                    .nullable(),
-                })
-                .optional(),
-              large: z
-                .object({
-                  name: z.string(),
-                  hash: z.string(),
-                  ext: z.string(),
-                  mime: z.string(),
-                  width: z.number(),
-                  height: z.number(),
-                  size: z.number(),
-                  path: z.string().nullable(),
-                  url: z.string(),
-                  provider_metadata: z
-                    .object({
-                      public_id: z.string(),
-                      resource_type: z.string(),
-                    })
-                    .nullable(),
-                })
-                .optional(),
+              thumbnail: ImageFormatObject,
+              small: ImageFormatObject,
+              medium: ImageFormatObject,
+              large: ImageFormatObject,
             }),
             createdAt: z.string(),
             updatedAt: z.string(),

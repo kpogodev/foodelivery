@@ -1,5 +1,6 @@
 import styles from './Sitemap.module.css'
 import Link from 'next/link'
+import { CMS_URL } from 'config/index'
 
 function Sitemap() {
   return (
@@ -50,6 +51,11 @@ function Sitemap() {
           <Link href='/terms'>
             <a className={styles.link}>Terms</a>
           </Link>
+        </li>
+        <li className={styles.item}>
+          <a href={CMS_URL} className={styles.link} target='_blank' rel='noreferrer'>
+            CMS
+          </a>
         </li>
       </ul>
     </div>
