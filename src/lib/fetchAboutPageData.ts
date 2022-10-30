@@ -20,7 +20,7 @@ const dataValidator = z.object({
       counter_happy_clients: z.number(),
       counter_orders_everyday: z.number(),
       counter_professionals: z.number(),
-      counter_work_since: z.date(),
+      counter_work_since: z.string(),
       media_header: z.string(),
       media_text: z.string(),
       media_video: SingleVideoMediaSchema,
@@ -34,8 +34,9 @@ const dataValidator = z.object({
 export type AboutPageAPIResponse = z.infer<typeof dataValidator>
 
 export const fetchAboutPageData = async () => {
-  const response = await fetch(`${API_URL}/about?populate[]=page_heading_image&populate[]=media_video`)
+  const response = await fetch(`${API_URL}/about?populate[]=page_heading_image&populate[]=media_video&populate[]=main_section_image`)
   const data = await response.json()
   const responseData = dataValidator.parse(data)
+
   return responseData
 }

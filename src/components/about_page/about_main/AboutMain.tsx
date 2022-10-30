@@ -1,6 +1,5 @@
 import Image from 'next/future/image'
 import styles from './AboutMain.module.css'
-import imgSrc from 'assets/home-about.webp'
 import BulletIcon from 'assets/bullet-about.svg'
 import { motion } from 'framer-motion'
 
@@ -29,16 +28,17 @@ const elementsEntranceVariants = {
     },
   },
 }
+interface AboutMainProps {
+  header: string
+  text: string
+  imgSrc: string
+  imgWidth: number
+  imgHeight: number
+  bulletPoints: string
+}
 
-const points: string[] = [
-  'people who want to lose weight',
-  'athlets and those who lead an active lifestyle',
-  'pragnant and lactating women',
-  'vegetarians and vegans',
-  'fasting',
-]
-
-function AboutMain() {
+function AboutMain({ header, text, imgSrc, imgWidth, imgHeight, bulletPoints }: AboutMainProps) {
+  const listItems = bulletPoints.split(';')
   return (
     <motion.div
       className={styles.container}
@@ -49,24 +49,20 @@ function AboutMain() {
     >
       <div className={styles.inner}>
         <motion.div className={styles.image_wrap} variants={imageEntranceVariants}>
-          <Image src={imgSrc} alt='' />
+          <Image src={imgSrc} alt='' width={imgWidth} height={imgHeight} />
         </motion.div>
         <div className={styles.content}>
           <motion.h2 className={styles.header} variants={elementsEntranceVariants}>
-            Only Quality Products
+            {header}
           </motion.h2>
           <motion.p className={styles.text} variants={elementsEntranceVariants}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium dolore deserunt earum magnam quo
-            excepturi laborum cupiditate eveniet cum repellat, soluta, itaque debitis cumque adipisci recusandae natus,
-            amet doloribus laboriosam! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium dolore
-            deserunt earum magnam quo excepturi laborum cupiditate eveniet cum repellat, soluta, itaque debitis cumque
-            adipisci recusandae natus, amet doloribus laboriosam!
+            {text}
           </motion.p>
           <ul className={styles.list}>
-            {points.map((point, index) => (
+            {listItems.map((item, index) => (
               <motion.li key={index} className={styles.item} variants={elementsEntranceVariants}>
                 <BulletIcon className={styles.bullet} />
-                {point}
+                {item}
               </motion.li>
             ))}
           </ul>

@@ -50,8 +50,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      homepageData: homepageData,
-      mealsData: mealsData,
+      homepageData,
+      mealsData,
     },
     revalidate: 60,
   }
