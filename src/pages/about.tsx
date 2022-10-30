@@ -6,6 +6,7 @@ import GetInTouch from 'components/reusable/get_in_touch/GetInTouch'
 import AboutMain from 'components/about_page/about_main/AboutMain'
 import Counter from 'components/about_page/counter/Counter'
 import Media from 'components/reusable/media/Media'
+import Partners from 'components/about_page/partners/Partners'
 
 const About: NextPage = () => {
   return (
@@ -19,7 +20,7 @@ const About: NextPage = () => {
         videoSrc='/placeholder.mp4'
         posterSrc='/media_video_placeholder.webp'
       />
-      <GetInTouch />
+      <Partners />
     </motion.main>
   )
 }
