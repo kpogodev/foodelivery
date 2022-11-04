@@ -19,7 +19,7 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
     <motion.main {...pageTransition}>
       <Meta
         title={homepageData.data.attributes.page_title}
-        description={homepageData.data?.attributes.page_description}
+        description={homepageData.data.attributes.page_description}
       />
       <HeroContextProvider data={mealsData}>
         <Hero />
