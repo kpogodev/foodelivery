@@ -47,17 +47,17 @@ function Category({ categories }: { categories: Category[] }) {
   const categoryIcon = (category: string) => {
     switch (category) {
       case "Breakfast":
-        return BreakfastIcon
+        return <BreakfastIcon />
       case "Lunch":
-        return LunchIcon
+        return <LunchIcon />
       case "Dinner":
-        return DinnerIcon
+        return <DinnerIcon />
       case "Snack":
-        return SnackIcon
+        return <SnackIcon />
       case "Drinks":
-        return DrinksIcon
+        return <DrinksIcon />
       default:
-        return BreakfastIcon
+        return <></>
     }
   }
 
