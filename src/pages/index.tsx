@@ -1,18 +1,18 @@
-import { InferGetStaticPropsType } from 'next'
-import { motion } from 'framer-motion'
-import { pageTransition } from 'utils/framer-animations'
-import Meta from 'components/reusable/meta/Meta'
-import About from 'components/home_page/about/About'
-import Hero from 'components/home_page/hero/Hero'
-import HeroContextProvider from 'context/HeroContext'
-import Menu from 'components/home_page/menu/Menu'
-import MenuContextProvider from 'context/MenuContext'
-import Media from 'components/reusable/media/Media'
-import HowItWorks from 'components/home_page/how_it_works/HowItWorks'
-import LatestPosts from 'components/home_page/latest_posts/LatestPosts'
-import GetInTouch from 'components/reusable/get_in_touch/GetInTouch'
-import { fetchHomepageData } from 'lib/fetchHomepageData'
-import { fetchMealsData } from 'lib/fetchMealsData'
+import { InferGetStaticPropsType } from "next"
+import { motion } from "framer-motion"
+import { pageTransition } from "utils/framer-animations"
+import Meta from "components/reusable/meta/Meta"
+import About from "components/home_page/about/About"
+import Hero from "components/home_page/hero/Hero"
+import HeroContextProvider from "context/HeroContext"
+import Menu from "components/home_page/menu/Menu"
+import MenuContextProvider from "context/MenuContext"
+import Media from "components/reusable/media/Media"
+import HowItWorks from "components/home_page/how_it_works/HowItWorks"
+import LatestPosts from "components/reusable/latest_posts/LatestPosts"
+import GetInTouch from "components/reusable/get_in_touch/GetInTouch"
+import { fetchHomepageData } from "lib/fetchHomepageData"
+import { fetchMealsData } from "lib/fetchMealsData"
 
 const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
