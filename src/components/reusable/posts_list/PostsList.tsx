@@ -1,14 +1,31 @@
-import { useMemo } from 'react'
-import Image from 'next/future/image'
-import Link from 'next/link'
-import useMediaQuery from 'hooks/useMediaQuery'
-import { Post } from 'types'
-import styles from './PostsList.module.css'
-import ClockIcon from 'assets/clock.svg'
-import UserIcon from 'assets/user.svg'
-import CommentIcon from 'assets/comment.svg'
-import ChevronsIcon from 'assets/double-chevron.svg'
-import { motion } from 'framer-motion'
+import { useMemo } from "react"
+import Image from "next/future/image"
+import Link from "next/link"
+import useMediaQuery from "hooks/useMediaQuery"
+import styles from "./PostsList.module.css"
+import ClockIcon from "assets/clock.svg"
+import UserIcon from "assets/user.svg"
+import CommentIcon from "assets/comment.svg"
+import ChevronsIcon from "assets/double-chevron.svg"
+import { motion } from "framer-motion"
+
+interface Post {
+  id: number | string
+  title: string
+  body: string
+  author: string
+  date: string
+  comments: Comment[]
+  images: string[]
+  tags: string[]
+}
+
+interface Comment {
+  id: number | string
+  author: string
+  body: string
+  date: string
+}
 
 const elementEntranceVariants = {
   offscreen: {
@@ -25,7 +42,7 @@ const elementEntranceVariants = {
 }
 
 function PostsList({ posts }: { posts: Post[] }) {
-  const { matches: showLess } = useMediaQuery('(max-width: 1200px)')
+  const { matches: showLess } = useMediaQuery("(max-width: 1200px)")
   const postsToShow = useMemo(() => (showLess ? posts.slice(0, 2) : posts), [showLess, posts])
 
   return (

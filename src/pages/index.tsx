@@ -15,26 +15,21 @@ import { fetchHomepageData } from "lib/fetchHomepageData"
 import { fetchMealsData } from "lib/fetchMealsData"
 
 const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { attributes: pageData } = homepageData.data
   return (
     <motion.main {...pageTransition}>
-      <Meta
-        title={homepageData.data.attributes.page_title}
-        description={homepageData.data.attributes.page_description}
-      />
+      <Meta title={pageData.seo.title} description={pageData.seo.description} />
       <HeroContextProvider data={mealsData}>
         <Hero />
       </HeroContextProvider>
-      <About
-        description={homepageData.data.attributes.about_us_text}
-        image={homepageData.data.attributes.about_us_image.data.attributes.url}
-      />
+      <About description={pageData.about_us_text} image={pageData.about_us_image.data.attributes.url} />
       <MenuContextProvider initialState={{ meals: mealsData }}>
         <Menu />
       </MenuContextProvider>
       <Media
-        header={homepageData.data.attributes.media_header}
-        text={homepageData.data.attributes.media_text}
-        videoSrc={homepageData.data.attributes.media_video.data.attributes.url}
+        header={pageData.media_header}
+        text={pageData.media_text}
+        videoSrc={pageData.media_video.data.attributes.url}
         posterSrc='/media_video_placeholder.webp'
       />
       <HowItWorks />

@@ -14,7 +14,7 @@ import styles from "./Category.module.css"
 import "swiper/css"
 import "swiper/css/navigation"
 
-type Category = "Breakfast" | "Lunch" | "Dinner" | "Snack" | "Drinks"
+type Category = "Breakfast" | "Lunch" | "Dinner" | "Snack" | "Drink"
 
 function Category({ categories }: { categories: Category[] }) {
   const { matches: isMobile } = useMediaQuery("(max-width: 768px)")
@@ -54,7 +54,7 @@ function Category({ categories }: { categories: Category[] }) {
         return <DinnerIcon />
       case "Snack":
         return <SnackIcon />
-      case "Drinks":
+      case "Drink":
         return <DrinksIcon />
       default:
         return <></>

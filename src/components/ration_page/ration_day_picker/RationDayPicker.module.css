@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  width: 100%;
+  max-width: var(--inner-width);
+  padding-top: clamp(4rem, 5vw, 6rem);
+  margin-inline: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.swiper {
+  --swiper-navigation-size: 2.5rem;
+  --swiper-navigation-color: var(--cl-secondary);
+  width: 20rem;
+  overflow: visible !important;
+}

@@ -1,18 +1,20 @@
-import { z } from 'zod'
-import { API_URL } from 'config'
-import { MetaSchema, SingleImageMediaSchema, SingleVideoMediaSchema } from './zodCommonSchemas'
+import { z } from "zod"
+import { API_URL } from "config"
+import {
+  MetaSchema,
+  SingleImageMediaSchema,
+  SingleVideoMediaSchema,
+  SEOSchema,
+  PageBannerSchema,
+} from "./zodCommonSchemas"
 
 const dataValidator = z.object({
   meta: MetaSchema,
   data: z.object({
     id: z.number(),
     attributes: z.object({
-      page_title: z.string(),
-      page_description: z.string(),
-      page_heading_title: z.string(),
-      page_heading_text_color: z.string(),
-      page_heading_background_color: z.string(),
-      page_heading_image: SingleImageMediaSchema,
+      seo: SEOSchema,
+      page_banner: PageBannerSchema,
       main_section_header: z.string(),
       main_section_text: z.string(),
       main_section_image: SingleImageMediaSchema,
@@ -34,9 +36,14 @@ const dataValidator = z.object({
 export type AboutPageAPIResponse = z.infer<typeof dataValidator>
 
 export const fetchAboutPageData = async () => {
-  const response = await fetch(`${API_URL}/about?populate[]=page_heading_image&populate[]=media_video&populate[]=main_section_image`)
+  const response = await fetch(`${API_URL}/about?populate=deep`)
   const data = await response.json()
-  const responseData = dataValidator.parse(data)
+  const parsedData = dataValidator.safeParse(data)
 
-  return responseData
+  if (!parsedData.success) {
+    console.error(parsedData.error.issues)
+    throw new Error("Error while fetching data")
+  }
+
+  return parsedData.data
 }

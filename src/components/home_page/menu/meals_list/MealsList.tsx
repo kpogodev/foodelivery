@@ -1,8 +1,7 @@
 import { useContext } from 'react'
 import { MenuContext } from 'context/MenuContext'
 import styles from './MealsList.module.css'
-import MealCard from '../meal_card/MealCard'
-import { AnimatePresence } from 'framer-motion'
+import MealCard from '../../../reusable/meal_card/MealCard'
 
 function MealsList() {
   const ctx = useContext(MenuContext)

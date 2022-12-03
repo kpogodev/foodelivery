@@ -7,7 +7,7 @@ function Menu() {
   return (
     <div className={styles.container}>
       <Filter />
-      <Category categories={["Breakfast", "Dinner", "Drinks", "Lunch", "Snack"]} />
+      <Category categories={["Breakfast", "Lunch", "Dinner", "Snack", "Drink"]} />
       <MealsList />
     </div>
   )

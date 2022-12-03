@@ -1,6 +1,6 @@
-import { z } from 'zod'
-import { API_URL } from 'config'
-import { MetaSchema, MultipleImagesMediaSchema } from 'lib/zodCommonSchemas'
+import { z } from "zod"
+import { API_URL } from "config"
+import { MetaSchema, MultipleImagesMediaSchema } from "lib/zodCommonSchemas"
 
 const mealsValidator = z.object({
   meta: MetaSchema,
@@ -32,9 +32,14 @@ const mealsValidator = z.object({
 export type MealsAPIResponse = z.infer<typeof mealsValidator>
 
 export const fetchMealsData = async (): Promise<MealsAPIResponse> => {
-  const response = await fetch(`${API_URL}/meals?populate[]=images`)
+  const response = await fetch(`${API_URL}/meals?populate=deep`)
   const data = await response.json()
-  const responseData = mealsValidator.parse(data)
+  const parsedData = mealsValidator.safeParse(data)
 
-  return responseData
+  if (!parsedData.success) {
+    console.error(parsedData.error.issues)
+    throw new Error("Error while fetching data")
+  }
+
+  return parsedData.data
 }

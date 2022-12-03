@@ -1,28 +1,25 @@
-import { motion } from 'framer-motion'
-import { pageTransition } from 'utils/framer-animations'
-import PageHeading from 'components/reusable/page_heading/PageHeading'
-import { InferGetStaticPropsType } from 'next'
-import AboutMain from 'components/about_page/about_main/AboutMain'
-import Counter from 'components/about_page/counter/Counter'
-import Media from 'components/reusable/media/Media'
-import Partners from 'components/about_page/partners/Partners'
-import Meta from 'components/reusable/meta/Meta'
-import { fetchAboutPageData } from 'lib/fetchAboutPageData'
+import { motion } from "framer-motion"
+import { pageTransition } from "utils/framer-animations"
+import PageHeading from "components/reusable/page_heading/PageHeading"
+import { InferGetStaticPropsType } from "next"
+import AboutMain from "components/about_page/about_main/AboutMain"
+import Counter from "components/about_page/counter/Counter"
+import Media from "components/reusable/media/Media"
+import Partners from "components/about_page/partners/Partners"
+import Meta from "components/reusable/meta/Meta"
+import { fetchAboutPageData } from "lib/fetchAboutPageData"
 
 const About = ({ aboutPageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { attributes: pageData } = aboutPageData.data
 
   return (
     <motion.main {...pageTransition}>
-      <Meta
-        title={pageData.page_title}
-        description={pageData.page_description}
-      />
+      <Meta title={pageData.seo.title} description={pageData.seo.description} />
       <PageHeading
-        title={pageData.page_heading_title}
-        backgroundColor={pageData.page_heading_background_color}
-        textColor={pageData.page_heading_text_color}
-        imgSrc={pageData.page_heading_image.data.attributes.url}
+        title={pageData.page_banner.page_title}
+        backgroundColor={pageData.page_banner.background_color}
+        textColor={pageData.page_banner.text_color}
+        imgSrc={pageData.page_banner.image.data.attributes.url}
       />
       <AboutMain
         header={pageData.main_section_header}

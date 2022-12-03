@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  max-width: var(--inner-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.header {
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.info_bar {
+  display: flex;
+  gap: 4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #343232;
+  line-height: 1;
+}
+
+.info_bar span {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: currentColor;
+}
+
+.text {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #6b6b6b;
+  font-weight: 300;
+}
+
+@media (min-width: 769px) {
+  .container {
+    align-items: flex-start;
+    gap: 4rem;
+  }
+}

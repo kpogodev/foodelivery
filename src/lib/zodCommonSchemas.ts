@@ -132,3 +132,15 @@ export const MultipleImagesMediaSchema = z
     ),
   })
   .nullable()
+
+  export const PageBannerSchema = z.object({
+    page_title: z.string(),
+    background_color: z.string(),
+    text_color: z.string(),
+    image: SingleImageMediaSchema,
+  })
+
+  export const SEOSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+  })

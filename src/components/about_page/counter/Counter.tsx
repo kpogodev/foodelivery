@@ -1,5 +1,5 @@
-import styles from './Counter.module.css'
-import CounterItem from './counter_item/CounterItem'
+import styles from "./Counter.module.css"
+import CounterItem from "./counter_item/CounterItem"
 
 interface CounterProps {
   happyClients: number

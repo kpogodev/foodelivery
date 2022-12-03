@@ -57,7 +57,7 @@ function GetInTouch() {
             </div>
           </motion.form>
         </div>
-        <Image className={styles.img} src='/git.png' alt='' width={1213} height={1162} />
+        <Image className={styles.img} src='/git-2.png' alt='' width={1213} height={1162} />
       </div>
     </motion.div>
   )

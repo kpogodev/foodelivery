@@ -1,0 +1,4 @@
+.container {
+  padding-top: 4rem;
+  padding-inline: clamp(1.5rem, 3.9vw, 3rem);
+}
