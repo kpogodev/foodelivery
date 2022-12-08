@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from "zod"
 
 export const MetaSchema = z
   .object({
@@ -133,14 +133,52 @@ export const MultipleImagesMediaSchema = z
   })
   .nullable()
 
-  export const PageBannerSchema = z.object({
-    page_title: z.string(),
-    background_color: z.string(),
-    text_color: z.string(),
-    image: SingleImageMediaSchema,
-  })
-
-  export const SEOSchema = z.object({
-    title: z.string(),
+export const MealSchema = z.object({
+  id: z.number(),
+  attributes: z.object({
+    name: z.string(),
+    slug: z.string(),
     description: z.string(),
-  })
+    price: z.number(),
+    size: z.string(),
+    calories: z.number(),
+    fats: z.number(),
+    proteins: z.number(),
+    category: z.string(),
+    vegan_friendly: z.boolean(),
+    vegetarian_friendly: z.boolean(),
+    gluten_free: z.boolean(),
+    week_special: z.boolean(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    images: MultipleImagesMediaSchema,
+  }),
+})
+
+export const DailyRationPlanSchema = z.object({
+  id: z.number(),
+  breakfast: z.object({
+    data: MealSchema
+  }),
+  lunch: z.object({
+    data: MealSchema
+  }),
+  dinner: z.object({
+    data: MealSchema
+  }),
+  snack: z.object({
+    data: MealSchema
+  }),
+})
+
+export const PageBannerSchema = z.object({
+  page_title: z.string(),
+  background_color: z.string(),
+  text_color: z.string(),
+  image: SingleImageMediaSchema,
+})
+
+export const SEOSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+})

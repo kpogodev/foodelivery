@@ -9,10 +9,6 @@ const dataValidator = z.object({
     attributes: z.object({
       seo: SEOSchema,
       page_banner: PageBannerSchema,
-      main_section_header: z.string(),
-      main_section_calories: z.string(),
-      main_section_course_length: z.string(),
-      main_section_course_description: z.string(),
       createdAt: z.string(),
       updatedAt: z.string(),
       publishedAt: z.string(),

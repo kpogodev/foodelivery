@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, A11y } from "swiper"
-import { MenuContext } from "context/MenuContext"
+import SwiperCore, { Navigation, A11y } from "swiper"
+import { RationPlanContext } from "context/RationPlanContext"
 import useMediaQuery from "hooks/useMediaQuery"
 import MealButton from "components/reusable/meal_button/MealButton"
 import MealSwiperSlide from "components/reusable/meal_swiper_slide/MealSwiperSlide"
@@ -16,23 +16,15 @@ import styles from "./RationDayPicker.module.css"
 import "swiper/css"
 import "swiper/css/navigation"
 
-type Days = "Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday"
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-//temporary
-const ctx = {
-  categoryFilter: "Monday",
-  handleCategoryChange: (value: string) => {},
-}
-
-function RationDayPicker({ days }: { days: Days[] }) {
+function RationDayPicker() {
+  const ctx = useContext(RationPlanContext)
   const { matches: isMobile } = useMediaQuery("(max-width: 840px)")
 
-  const [selectedDay, setSelectedDay] = useState(ctx.categoryFilter ?? "Monday")
-
   const handleClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    const value = e.currentTarget.value
-    ctx.handleCategoryChange(value)
-    setSelectedDay(value)
+    const value = e.currentTarget.value.toLowerCase() as typeof ctx.dayOfTheWeek
+    ctx.handleDayChange(value)
   }
 
   const swiperConfig = {
@@ -41,13 +33,14 @@ function RationDayPicker({ days }: { days: Days[] }) {
     spaceBetween: 0,
     navigation: true,
     watchSlidesProgress: true,
-    onSlideChange: (swiper: any) => {
-      const value = swiper.slides[swiper.activeIndex].dataset.meal
-      ctx.handleCategoryChange(value)
-      setSelectedDay(value)
+    onSlideChange: (swiper: SwiperCore) => {
+      const value = swiper.slides[swiper.activeIndex].getAttribute("data-meal") as typeof ctx.dayOfTheWeek
+      ctx.handleDayChange(value)
     },
-    onInit: (swiper: any) => {
-      const idx = [...swiper.slides].findIndex((slide: any) => slide.dataset.meal === ctx.categoryFilter)
+    onInit: (swiper: SwiperCore) => {
+      const idx = Array.from(swiper.slides).findIndex(
+        (slide: SwiperCore["slides"][0]) => slide.getAttribute("data-meal") === ctx.dayOfTheWeek
+      )
       swiper.slideTo(idx)
     },
   }
@@ -76,8 +69,8 @@ function RationDayPicker({ days }: { days: Days[] }) {
   const mobileComponent = (
     <Swiper className={styles.swiper} {...swiperConfig}>
       {days.map((day) => (
-        <SwiperSlide key={day} className='slide-with-visibility' data-meal={day}>
-          <MealSwiperSlide meal={day} selected={selectedDay === day}>
+        <SwiperSlide key={day} className='slide-with-visibility' data-meal={day.toLowerCase()}>
+          <MealSwiperSlide meal={day} selected={ctx.dayOfTheWeek === day.toLowerCase()}>
             {dayIcon(day)}
           </MealSwiperSlide>
         </SwiperSlide>
@@ -88,7 +81,12 @@ function RationDayPicker({ days }: { days: Days[] }) {
   const desktopComponent = (
     <>
       {days.map((day) => (
-        <MealButton key={day} meal={day} selected={selectedDay === day} handleClick={handleClick}>
+        <MealButton
+          key={day}
+          meal={day.toLowerCase()}
+          selected={ctx.dayOfTheWeek === day.toLowerCase()}
+          handleClick={handleClick}
+        >
           {dayIcon(day)}
         </MealButton>
       ))}
