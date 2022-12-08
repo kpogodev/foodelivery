@@ -148,7 +148,6 @@ export const MealSchema = z.object({
     vegan_friendly: z.boolean(),
     vegetarian_friendly: z.boolean(),
     gluten_free: z.boolean(),
-    week_special: z.boolean(),
     createdAt: z.string(),
     updatedAt: z.string(),
     images: MultipleImagesMediaSchema,

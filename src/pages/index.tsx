@@ -13,13 +13,14 @@ import LatestPosts from "components/reusable/latest_posts/LatestPosts"
 import GetInTouch from "components/reusable/get_in_touch/GetInTouch"
 import { fetchHomepageData } from "lib/fetchHomepageData"
 import { fetchMealsData } from "lib/fetchMealsData"
+import { fetchWeekSpecialData } from "lib/fetchWeekSpecial"
 
-const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = ({ mealsData, homepageData, weekSpecialData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { attributes: pageData } = homepageData.data
   return (
     <motion.main {...pageTransition}>
       <Meta title={pageData.seo.title} description={pageData.seo.description} />
-      <HeroContextProvider data={mealsData}>
+      <HeroContextProvider data={weekSpecialData}>
         <Hero />
       </HeroContextProvider>
       <About description={pageData.about_us_text} image={pageData.about_us_image.data.attributes.url} />
@@ -41,14 +42,20 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
 
 export async function getStaticProps() {
   const homepageDataPromise = fetchHomepageData()
+  const weekSpecialPromise = fetchWeekSpecialData()
   const mealsDataPromise = fetchMealsData()
-  
-  const [homepageData, mealsData] = await Promise.all([homepageDataPromise, mealsDataPromise])
+
+  const [homepageData, weekSpecialData, mealsData] = await Promise.all([
+    homepageDataPromise,
+    weekSpecialPromise,
+    mealsDataPromise,
+  ])
 
   return {
     props: {
       homepageData,
       mealsData,
+      weekSpecialData,
     },
     revalidate: 60,
   }

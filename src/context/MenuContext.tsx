@@ -25,8 +25,9 @@ type ActionTypes =
   | { type: 'SET_CATEGORY_FILTER'; payload: PayloadType }
 
 type UseMenuStateManagerResult = ReturnType<typeof useMenuStateManager>
-
 type CreateInitailStateResult = ReturnType<typeof createInitialState>
+
+export const MenuContext = createContext<UseMenuStateManagerResult>({} as UseMenuStateManagerResult)
 
 // Helper function to set initial category
 const setInitialCategory = () => {
@@ -197,18 +198,6 @@ function useMenuStateManager(initialState: InitialState) {
     handleCategoryChange,
   }
 }
-
-export const MenuContext = createContext<UseMenuStateManagerResult>({
-  meals: [],
-  genderFilter: '',
-  handleGenderChange: () => {},
-  sizeFilter: '',
-  handleSizeChange: () => {},
-  preferenceFilter: '',
-  handlePreferenceChange: () => {},
-  categoryFilter: '',
-  handleCategoryChange: () => {},
-})
 
 export default function MenuContextProvider({ initialState, children }: MenuContextProviderProps) {
   return <MenuContext.Provider value={useMenuStateManager(initialState)}>{children}</MenuContext.Provider>
