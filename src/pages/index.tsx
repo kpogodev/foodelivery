@@ -40,8 +40,10 @@ const Home = ({ mealsData, homepageData }: InferGetStaticPropsType<typeof getSta
 }
 
 export async function getStaticProps() {
-  const homepageData = await fetchHomepageData()
-  const mealsData = await fetchMealsData()
+  const homepageDataPromise = fetchHomepageData()
+  const mealsDataPromise = fetchMealsData()
+  
+  const [homepageData, mealsData] = await Promise.all([homepageDataPromise, mealsDataPromise])
 
   return {
     props: {

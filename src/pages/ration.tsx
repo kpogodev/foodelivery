@@ -23,7 +23,7 @@ const Ration = ({ rationPageData, rationPlanData }: InferGetStaticPropsType<type
         imgSrc={pageData.page_banner.image.data.attributes.url}
       />
       <RationPlanContextProvider data={rationPlanData}>
-        <RationMain/>
+        <RationMain />
       </RationPlanContextProvider>
       <LatestPosts />
       <GetInTouch />
@@ -32,8 +32,11 @@ const Ration = ({ rationPageData, rationPlanData }: InferGetStaticPropsType<type
 }
 
 export async function getStaticProps() {
-  const rationPageData = await fetchRationPageData()
-  const rationPlanData = await fetchRationPlanData()
+  const rationPageDataPromise = fetchRationPageData()
+  const rationPlanDataPromise = fetchRationPlanData()
+
+  const [rationPageData, rationPlanData] = await Promise.all([rationPageDataPromise, rationPlanDataPromise])
+
   return {
     props: {
       rationPageData,
