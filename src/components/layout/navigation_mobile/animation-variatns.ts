@@ -1,4 +1,4 @@
-export const containerVariants: any = {
+export const containerVariants = {
   open: {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     transition: {
@@ -12,11 +12,10 @@ export const containerVariants: any = {
       duration: 0.4,
       ease: 'easeInOut',
     },
-    pointerEvents: 'none',
   },
 }
 
-export const containerInnerVariants: any = {
+export const containerInnerVariants = {
   open: {
     x: 0,
     backgroundColor: 'var(--cl-secondary)',
@@ -33,7 +32,7 @@ export const containerInnerVariants: any = {
   },
 }
 
-export const listVariants: any = {
+export const listVariants = {
   show: {
     opacity: 1,
     transition: {
@@ -52,7 +51,7 @@ export const listVariants: any = {
   },
 }
 
-export const listItemVariants: any = {
+export const listItemVariants = {
   show: {
     opacity: 1,
     y: 0,
