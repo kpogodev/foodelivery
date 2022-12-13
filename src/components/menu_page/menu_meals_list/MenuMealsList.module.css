@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(2.5rem, 2.6vw, 5rem);
+  width: 100%;
+  padding-block: clamp(4rem, 4.166vw, 8rem);
+}
+
+.header {
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(2rem, 2.34vw, 4.5rem);
+}
+
+@media (min-width: 769px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
